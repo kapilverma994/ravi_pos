@@ -27,7 +27,7 @@
 
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
-       
+
           </div>
           <div class="table-responsive p-3">
             <table class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -36,24 +36,7 @@
                     <th>Sno</th>
                   <th>Order Id</th>
                   <th>Customer Name</th>
-                  <th>Product Name</th>
-                <th>Qty</th>
-                <th>Gst Amount</th>
-                <th>Amount</th>
-                <th>Total Amount</th>
-                <th>Invoice No</th>
-                <th>Created At</th> 
-                  <th>Action</th>
-          
-            
-
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th>Sno</th>
-                  <th>Order Id</th>
-                  <th>Customer Name</th>
+                  <th>Customer Mobile</th>
                   <th>Product Name</th>
                 <th>Qty</th>
                 <th>Gst Amount</th>
@@ -62,7 +45,26 @@
                 <th>Invoice No</th>
                 <th>Created At</th>
                   <th>Action</th>
-                
+
+
+
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Sno</th>
+                  <th>Order Id</th>
+                  <th>Customer Name</th>
+                  <th>Customer Mobile</th>
+                  <th>Product Name</th>
+                <th>Qty</th>
+                <th>Gst Amount</th>
+                <th>Amount</th>
+                <th>Total Amount</th>
+                <th>Invoice No</th>
+                <th>Created At</th>
+                  <th>Action</th>
+
                 </tr>
               </tfoot>
               <tbody>
@@ -71,14 +73,15 @@
 <tr>
   <td>{{$loop->iteration}}</td>
     <td>{{$item->id}}</td>
-    <td>{{$item->customer_id->get_cname()}}</td>
-    <td>{{$item->product_id}}</td>
+    <td>{{$item->customer_name}}</td>
+    <td>{{$item->phone}}</td>
+    <td>{{$item->name}}</td>
     <td>{{$item->qty}}</td>
     <td>{{$item->gst}}</td>
     <td>{{$item->amount}}</td>
     <td>{{$item->total_amount}}</td>
     <td>{{$item->invoice_no}}</td>
-    <td>{{$item->created_at->diffforhumans()}}</td>
+    <td>{{Carbon\Carbon::parse($item->created_at)->diffforhumans()}}</td>
     {{-- <td>
         @if($item->status==1)
         <span class="badge badge-success">Active</span>
@@ -86,11 +89,12 @@
         <span class="badge badge-danger">Inactive</span>
         @endif
     </td> --}}
-    
-    <td>
-       
+
+    <td class="d-flex  ">
+
 
 <a class="btn btn-warning" href="{{route('order.edit',$item->id)}}">Edit</a>
+<a class="btn btn-primary ml-1" href="{{route('exportpdf')}}">Invoice</a>
 
     </td>
 

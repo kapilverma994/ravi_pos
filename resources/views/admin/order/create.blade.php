@@ -56,6 +56,14 @@
 
 </div>
 <div class="form-group">
+    <select name="check_gst" class="form-control" id="" required>
+        <option value="">Choose Gst</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+
+</div>
+<div class="form-group">
     <select name="p_id" class="form-control" id="" required>
         <option value="">Choose Product</option>
         @foreach ( $pro as $p)

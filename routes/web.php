@@ -34,6 +34,8 @@ Route::group(['middleware'=>'admin_auth','prefix'=>'admin'],function(){
     Route::resource('brand', BrandController::class);
     Route::get('category/status/{type}/{id}',[CategoryController::class,'status']);
 Route::resource('category', CategoryController::class);
+Route::get('/order/withoutgst',[OrderController::class,'without_gst'])->name('without_gst');
+Route::get('/order/exportpdf',[OrderController::class,'exportpdf'])->name('exportpdf');
 Route::resource('order', OrderController::class);
 
 Route::get('coupon/status/{type}/{id}',[CouponController::class,'status']);

@@ -7,6 +7,8 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -17,10 +19,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-     $data=Order::where('gst','!=',0)->get();
+     $data=DB::table('orders')->leftjoin('products','orders.product_id','products.id')->leftjoin('customers','orders.customer_id','customers.id')->where('orders.gst','!=',0)->select('orders.*','customers.name as customer_name','customers.phone','products.name')->get();
+
      return view('admin.order.index',compact('data'));
     }
+public function without_gst(){
+    $data=DB::table('orders')->leftjoin('products','orders.product_id','products.id')->leftjoin('customers','orders.customer_id','customers.id')->where('orders.gst','==',0)->select('orders.*','customers.name as customer_name','customers.phone','products.name')->get();
 
+    return view('admin.order.index',compact('data'));
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -30,6 +37,15 @@ class OrderController extends Controller
     {
         $pro=Product::latest()->get();
         return view('admin.order.create',compact('pro'));
+    }
+    public function exportpdf(){
+
+
+        $data=DB::table('orders')->leftjoin('products','orders.product_id','products.id')->leftjoin('customers','orders.customer_id','customers.id')->where('orders.gst','!=',0)->select('orders.*','customers.name as customer_name','customers.phone','products.name')->get();
+
+        $pdf= PDF::loadView('admin.order.invoice', compact('data'));
+        return $pdf->download('invoice.pdf');
+
     }
 
     /**
@@ -50,16 +66,16 @@ class OrderController extends Controller
            'amount'=>'required',
            'total_amount'=>'required',
         ]);
-        $tax=Setting::where('id',1)->value('tax');  
-       
+        $tax=Setting::where('id',1)->value('tax');
+
 
      $cuser=Customer::create(['name'=>$request->cname,'email'=>$request->email,'phone'=>$request->phone,'address'=>$request->cadd,'city'=>$request->city,'pincode'=>$request->pincode]);
 
 
-  
+
 
     // $res= Order::create(['product_id'=>$request->p_id,'customer_id'=>$cuser->id,'qty'=>$request->qty,'amount'=>$request->amount,'total_amount'=>$request->total_amount,'gst'=>$gst]);
- 
+
     $order=new Order();
 
     $order->product_id=$request->p_id;
@@ -68,7 +84,10 @@ class OrderController extends Controller
     $order->amount=$request->amount;
     $order->total_amount=$request->total_amount;
     $tax_amount=($request->total_amount * $tax)/100;
-    $order->gst=$tax_amount;
+    if($request->check_gst==1){
+        $order->gst=$tax_amount;
+    }
+
 
    $res= $order->save();
 
@@ -94,7 +113,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+
     }
 
     /**

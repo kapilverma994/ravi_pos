@@ -121,7 +121,7 @@
           </div>
         </div>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm123" aria-expanded="true"
           aria-controls="collapseForm">
@@ -132,6 +132,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
     <a class="collapse-item" href="{{route('order.create')}}">Create Order</a>
             <a class="collapse-item" href="{{route('order.index')}}">View Order</a>
+            <a class="collapse-item" href="{{route('without_gst')}}">View Order Without Gst</a>
           </div>
         </div>
       </li>
