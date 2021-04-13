@@ -6,12 +6,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="images/favicon.png" rel="icon" />
 <link rel="icon" href="" type="image/x-icon" />
-<title>Invoice</title>
+<title class="title">Invoice </title>
 <!-- Web Fonts
 ======================= -->
 
 <style>
+     @page {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  body  {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
 
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+  .main-title{
+ background-color: #000 !important;
+  }
+  .title{
+      display:none;
+  }
+
+}
 
 
 body { color: #3e3e3e; font-family: "Poppins", sans-serif; font-size:12px; line-height: 22px; }
@@ -89,7 +109,7 @@ p { margin:0 0 10px; line-height:16px; }
          <div class="header-1 header3" style="width: 30%; vertical-align: top;  float: left;">
         <div class="invoice-date" style="text-align:center">
           <p style="margin:0; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif;  color:#000;"> Invoice Date </p>
-		    <p style="margin:0 0 3px;  line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color: #3e3e3e;"> 10 April 2021</p>
+		    <p style="margin:0 0 3px;  line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color: #3e3e3e;"> {{Carbon\Carbon::parse($data->created_at)->format('d-m-Y')}}</p>
 		  <p style="margin:0; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color:#000; ">Invoice No. </p>
 	   <p style="margin:0 0 3px; ; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color: #3e3e3e;"> 001</p>
           <p style="margin:0; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color:#000;"> Order ID </p>
@@ -143,7 +163,7 @@ p { margin:0 0 10px; line-height:16px; }
           <th style="color:#000"> HSN Code </th>
           <th style="color:#000"> Qty</th>
           <th width="80" style="color:#000"> Rate</th>
-          <th width="100" style="color:#000"> Amount</th>
+
 
           <th width="100" style="color:#000"> Total</th>
         </tr>
@@ -153,10 +173,10 @@ p { margin:0 0 10px; line-height:16px; }
           <td>{{$data->name}} <br> </td>
           <td>{{$setting->hsn_code}}</td>
           <td>{{$data->qty}}</td>
-          <td>  {{$data->amount}}</td>
-          <td>{{$data->total_amount}}</td>
+          <td>  {{ number_format($data->amount),2}}</td>
 
-          <td>{{$data->total_amount}}</td>
+
+          <td>{{    number_format($data->total_amount),2}}</td>
 
 
 
