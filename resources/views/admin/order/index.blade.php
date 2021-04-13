@@ -94,7 +94,7 @@
 
 
 <a class="btn btn-warning" href="{{route('order.edit',$item->id)}}">Edit</a>
-<a class="btn btn-primary ml-1" href="{{route('exportpdf')}}">Invoice</a>
+<a class="btn btn-primary ml-1" href="{{route('exportpdf',$item->id)}}">Invoice</a>
 
     </td>
 

@@ -24,7 +24,7 @@ class OrderController extends Controller
      return view('admin.order.index',compact('data'));
     }
 public function without_gst(){
-    $data=DB::table('orders')->leftjoin('products','orders.product_id','products.id')->leftjoin('customers','orders.customer_id','customers.id')->where('orders.gst','==',0)->select('orders.*','customers.name as customer_name','customers.phone','products.name')->get();
+    $data=DB::table('orders')->leftjoin('products','orders.product_id','products.id')->leftjoin('customers','orders.customer_id','customers.id')->where('orders.gst','==',0)->select('orders.*','customers.name as customer_name','customers.phone','products.name')->where('orders.gst',0)->get();
 
     return view('admin.order.index',compact('data'));
 }
@@ -38,11 +38,13 @@ public function without_gst(){
         $pro=Product::latest()->get();
         return view('admin.order.create',compact('pro'));
     }
-    public function exportpdf(){
+    public function exportpdf($id=null){
 
 
-        $data=DB::table('orders')->leftjoin('products','orders.product_id','products.id')->leftjoin('customers','orders.customer_id','customers.id')->where('orders.gst','!=',0)->select('orders.*','customers.name as customer_name','customers.phone','products.name')->get();
+        $data=DB::table('orders')->leftjoin('products','orders.product_id','products.id')->leftjoin('customers','orders.customer_id','customers.id')->where('orders.id',$id)->select('orders.*','customers.name as customer_name','customers.phone','products.name')->first();
+$setting=Setting::latest()->first();
 
+        return view('admin.order.invoice',compact('data','setting'));
         $pdf= PDF::loadView('admin.order.invoice', compact('data'));
         return $pdf->download('invoice.pdf');
 
