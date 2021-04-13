@@ -75,8 +75,8 @@ p { margin:0 0 10px; line-height:16px; }
 
 
   <h2 class="main-title" style=" background: #292929; text-align: center; text-transform: uppercase; margin: 0 0 10px; color: #fff; font-weight: 500; line-height: 28px; line-height: 28px; font-size: 16px; float: left;  width: 100%; font-family:&quot;Poppins&quot;, sans-serif;">Tax Invoice</h2>
-  
-	
+
+
 	  <div style="padding: 0 15px 50px;">
     <div class="header-section" style=" margin: 0 0 10px; float: left; width: 100%;">
  <div class="header-1 header1" style="width: 25%; vertical-align: top;float: left;"><img src="" class="logo-img" alt="{{$setting->app_name}} logo" style"max-width: 125px; margin-top: 10px;"> </div>
@@ -87,53 +87,54 @@ p { margin:0 0 10px; line-height:16px; }
         <p style="font-size:12px; color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;"> <strong>GST:</strong> {{$setting->gst_no}}</p>
       </div>
          <div class="header-1 header3" style="width: 30%; vertical-align: top;  float: left;">
-        <div class="invoice-date" style="text-align:center">		
+        <div class="invoice-date" style="text-align:center">
           <p style="margin:0; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif;  color:#000;"> Invoice Date </p>
-		    <p style="margin:0 0 3px;  line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color: #3e3e3e;"> 10 April 2021</p>		 
-		  <p style="margin:0; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color:#000; ">Invoice No. </p>	 
-	   <p style="margin:0 0 3px; ; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color: #3e3e3e;"> 001</p>		  
-          <p style="margin:0; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color:#000;"> Order ID </p>	
-		  	   <p style="margin:0 0 3px;   line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color: #3e3e3e;">{{$setting->oid_format}}{{$data->id}}</p>		  
-		  
+		    <p style="margin:0 0 3px;  line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color: #3e3e3e;"> 10 April 2021</p>
+		  <p style="margin:0; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color:#000; ">Invoice No. </p>
+	   <p style="margin:0 0 3px; ; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color: #3e3e3e;"> 001</p>
+          <p style="margin:0; line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color:#000;"> Order ID </p>
+		  	   <p style="margin:0 0 3px;   line-height:16px;  font-size:12px; text-transform:uppercase; font-family:&quot;Poppins&quot;, sans-serif; color: #3e3e3e;">{{$setting->oid_format}}{{$data->id}}</p>
+
 		</div>
-      </div>  
-	  
-	  
-	  
-	  
+      </div>
 
 
-    </div>	
-  
-    
- 
+
+
+
+
+    </div>
+
+
+
   <div class="addrees_panel">
       <div class="address_left" style="width:48%; float:left;">
         <h3 class="add-titlte" style="margin:0"> Billing Address </h3>
-        <p> Name -{{$data->customer_name}}</p>
-        <p> Address -{{$data->address}} </p>
-        <p>City - {{$data->city}}</p></br>
-        
+        <p> Name - {{$data->customer_name}}</p>
+        <p> Address - {{$data->address}} </p>
+        <p>City - {{$data->city}}</p>
+
        <p> Pincode : {{$data->pincode}}</p>
-         
+
           Phone: {{$data->phone}}
       </div>
 
-    
-  
+
+
    <div class="address_left  address_right" style="width:48%; float:right;">
         <h3 class="add-titlte" style="margin:0" > Shipping Address </h3>
         <p> Name - {{$data->customer_name}}</p>
-        <p> Address - {{$data->address}}<br>
-      
-       
+        <p> Address - {{$data->address}}
+            <p>City - {{$data->city}}</p>
+
+
         </p>
-    <p> Pincode : {{$data->pincode}}</p></br>
+    <p> Pincode : {{$data->pincode}}</p>
         <p> Phone: {{$data->phone}}</p>
         <h6 style="font-size: 12px; margin: 6px 0 ;"> <strong>Payment Mode -  </strong> Cash on Delivery</h6>
       </div>
     </div>
-	
+
     <div class="product-table">
       <table style="font-size:12px; color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;">
         <tr>
@@ -143,7 +144,7 @@ p { margin:0 0 10px; line-height:16px; }
           <th style="color:#000"> Qty</th>
           <th width="80" style="color:#000"> Rate</th>
           <th width="100" style="color:#000"> Amount</th>
-         
+
           <th width="100" style="color:#000"> Total</th>
         </tr>
 
@@ -154,24 +155,24 @@ p { margin:0 0 10px; line-height:16px; }
           <td>{{$data->qty}}</td>
           <td>  {{$data->amount}}</td>
           <td>{{$data->total_amount}}</td>
-      
+
           <td>{{$data->total_amount}}</td>
 
 
-         
+
         </tr>
-  
+
         <tr>
-      
-          <td colspan="6"><strong>  Grand Total</strong></td>
-          <td colspan="1">4000</td>
+
+          {{-- <td colspan="6"><strong>  Grand Total</strong></td>
+          <td colspan="1">4000</td> --}}
         </tr>
-        <tr>
+        {{-- <tr>
           <td colspan="8" style="text-align:left"><p style="margin:0; font-size:12px; color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;">Amount Chargeable (In words)<br>
             </p>
       <h4 style="font-size: 13px; font-weight: 500; color: #000; font-family:&quot;Poppins&quot;, sans-serif;"> Kapil </h4></td>
-			
- </tr>
+
+ </tr> --}}
       </table>
     </div>
     <div class="product-table-tax" style="float:left; width:100%">
@@ -184,56 +185,64 @@ p { margin:0 0 10px; line-height:16px; }
             <li style="font-size:11px !important;  color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;"> <span> A/c No.  : </span> 664305600677 </li>
             <li style="font-size:11px !important;  color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;"> <span> IFS Code :</span> ICIC0006643 </li>
           </ul>
-		
-		    
-		  
+
+
+
         </div> --}}
       </div>
-	  
-	 
-	  
-	  
-	  
 
-	  
-	  
-	  
-	  
-	  
+
+
+
+
+
+
+
+
+
    <div style="width:55%; float:right">
+
+@if($data->gst)
         <table style="font-size:12px; color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;">
           <tr>
-            <th style="color:#000; font-size:12px;  font-family:&quot;Poppins&quot;, sans-serif;"> Taxable Value </th>
-              <th style="color:#000; font-size:12px;  font-family:&quot;Poppins&quot;, sans-serif;"> Tax Rate </th>
-             <th style="color:#000; font-size:12px;  font-family:&quot;Poppins&quot;, sans-serif;"> Tax Amount </th>	
-		 </tr>     
-		 
-      
-      
-        
+            <th style="color:#000; font-size:12px;  font-family:&quot;Poppins&quot;, sans-serif;"> GST </th>
+              <td style="color:#000; font-size:12px;  font-family:&quot;Poppins&quot;, sans-serif;"> {{$setting->tax}}% </td>
+             <td style="color:#000; font-size:12px;  font-family:&quot;Poppins&quot;, sans-serif;">{{$data->gst}} Rs</td>
+		 </tr>
+
+
+
+
         <tr>
-            <td> 4000</td>
-            <td>{{$setting->tax}}% </td>
-            <td>  4000 </td>
+            <th style="color:#000; font-size:12px;  font-family:&quot;Poppins&quot;, sans-serif;"> CGST</th>
+            <td>{{$setting->tax /2 }} % </td>
+            <td>  {{$data->gst/2}}</td>
           </tr>
-       
+          <tr>
+            <th style="color:#000; font-size:12px;  font-family:&quot;Poppins&quot;, sans-serif;"> SGST</th>
+            <td>{{$setting->tax /2 }} % </td>
+            <td>  {{$data->gst/2}}</td>
+          </tr>
+
        <tr>
-            <th colspan="2"> TOTAL TAX AMOUNT </th>
-            <th>4000    </th>
+            <th colspan="2"> GRAND TOTAL </th>
+            <th>{{$data->total_amount+$data->gst}}    </th>
           </tr>
         </table>
+        <h6 style="margin:38px 0; text-align:center; color:#3e3e3e; font-size:16px;">For<strong> {{$setting->app_name}}</strong></h6>
+        @endif
       </div>
     </div>
 	    <p style="color:#3e3e3e; margin:0; font-size:11px;  font-family:&quot;Poppins&quot;, sans-serif;">{{$setting->info}} </p>
      <p style="color:#3e3e3e;  margin:0; font-size:11px;  font-family:&quot;Poppins&quot;, sans-serif;">All amounts are inclusive of tax.</p>
-	
-	
+
+
   </div>
 
-  
-    
-	
-	  
+
+
+
+
     <div class="tablefooter" style="position:absolute; bottom:0; width:100%; text-align:center;">
          <table style="border-top:1px solid #dedddd; width:100%; padding: 0; margin: 0;">
           <tr>
@@ -243,10 +252,14 @@ p { margin:0 0 10px; line-height:16px; }
           </tr>
 
         </table>
-        
+
         </div>
 
 </div>
+@if($data->gst)
+
+@else
 <h6 style="margin:10px 0; text-align:center; color:#3e3e3e; font-size:11px;">This computer generated invoice does not require any stamp or signature</h6>
+@endif
 </body>
 </html>
