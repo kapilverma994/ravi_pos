@@ -41,11 +41,13 @@ public function without_gst(){
     public function exportpdf($id=null){
 
 
-        $data=DB::table('orders')->leftjoin('products','orders.product_id','products.id')->leftjoin('customers','orders.customer_id','customers.id')->where('orders.id',$id)->select('orders.*','customers.name as customer_name','customers.phone','products.name')->first();
-$setting=Setting::latest()->first();
+        $data=DB::table('orders')->leftjoin('products','orders.product_id','products.id')->leftjoin('customers','orders.customer_id','customers.id')->where('orders.id',$id)->select('orders.*','customers.name as customer_name','customers.phone','customers.address','customers.city','customers.pincode','products.name')->first();
+
+        $setting=Setting::latest()->first();
 
         return view('admin.order.invoice',compact('data','setting'));
-        $pdf= PDF::loadView('admin.order.invoice', compact('data'));
+       
+        $pdf= PDF::loadView('admin.order.invoice', compact('data','setting'));
         return $pdf->download('invoice.pdf');
 
     }
