@@ -129,7 +129,8 @@ public function without_gst(){
     public function edit(Order $order)
     {
         $data=Order::find($order->id);
-        return view('admin.order.edit',compact('data'));
+        $pro=Product::latest()->get();
+        return view('admin.order.edit',compact('data','pro'));
     }
 
     /**
@@ -141,7 +142,26 @@ public function without_gst(){
      */
     public function update(Request $request, Order $order)
     {
-        //
+      $order=Order::find($order->id);
+      $tax=Setting::where('id',1)->value('tax');
+      $order->product_id=$request->p_id;
+      $order->qty=$request->qty;
+      $order->amount=$request->amount;
+      $order->total_amount=$request->total_amount;
+      $tax_amount=($request->total_amount * $tax)/100;
+      if($request->check_gst==1){
+          $order->gst=$tax_amount;
+      }
+     $res= $order->save();
+      if($res){
+      
+    
+    
+               return redirect()->route('order.index')->with('success',"Order Updated Successfully");
+           }else{
+               return redirect()->back()->with('erros','Something went wrong!!');
+           }
+
     }
 
     /**

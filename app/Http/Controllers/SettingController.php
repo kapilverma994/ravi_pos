@@ -81,6 +81,15 @@ class SettingController extends Controller
   $setting->oid_format=$request->oid;
   $setting->info=$request->info;
   $setting->hsn_code=$request->hsn;
+  
+  if($request->hasFile('image')){
+    
+    $image_ext=$request->image->getClientOriginalExtension();
+   $image_id=hexdec(uniqid()).'.'.$image_ext;
+   
+   $request->image->storeAs('images', $image_id, 'public');
+   $setting->image=$image_id;
+ }
   $res=$setting->save();
 if($res){
     return redirect()->back()->with('success','updated successfully');
