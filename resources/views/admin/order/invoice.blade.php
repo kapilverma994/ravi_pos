@@ -107,7 +107,7 @@ p { margin:0 0 10px; line-height:16px; }
         <h3 style="font-size: 17px; font-weight: 500;  margin: 0;    text-transform: uppercase; color: #000; font-family:&quot;Poppins&quot;, sans-serif;">{{$setting->app_name}}</h3>
         <p style="font-size:12px; color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;">{{$setting->address}}
 </p>
-        <p style="font-size:12px; color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;"> <strong>GST:</strong> {{$setting->gst_no}}</p>
+       @if($data->gst) <p style="font-size:12px; color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;"> <strong>GST:</strong> {{$setting->gst_no}}</p>@endif
       </div>
          <div class="header-1 header3" style="width: 30%; vertical-align: top;  float: left;">
         <div class="invoice-date" style="text-align:center">
@@ -172,7 +172,7 @@ p { margin:0 0 10px; line-height:16px; }
         </tr>
 
      <tr>
-     
+
           <td>1</td>
           <td>{{$data->name}} <br> </td>
           <td>{{$setting->hsn_code}}</td>
@@ -253,12 +253,13 @@ p { margin:0 0 10px; line-height:16px; }
             <th>{{$data->total_amount+$data->gst}}    </th>
           </tr>
         </table>
-        <h6 style="margin:38px 0; text-align:center; color:#3e3e3e; font-size:16px;">For<strong> {{$setting->app_name}}</strong></h6>
         @endif
+        <h6 style="margin:38px 0; text-align:center; color:#3e3e3e; font-size:16px;">For<strong> {{$setting->app_name}}</strong></h6>
+
       </div>
     </div>
 	    <p style="color:#3e3e3e; margin:0; font-size:11px;  font-family:&quot;Poppins&quot;, sans-serif;">{!!$setting->info!!} </p>
-     <p style="color:#3e3e3e;  margin:0; font-size:11px;  font-family:&quot;Poppins&quot;, sans-serif;">All amounts are inclusive of tax.</p>
+
 
 
   </div>
@@ -280,10 +281,6 @@ p { margin:0 0 10px; line-height:16px; }
         </div>
 
 </div>
-@if($data->gst)
 
-@else
-<h6 style="margin:10px 0; text-align:center; color:#3e3e3e; font-size:11px;">This computer generated invoice does not require any stamp or signature</h6>
-@endif
 </body>
 </html>
