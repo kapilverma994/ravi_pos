@@ -172,7 +172,8 @@ p { margin:0 0 10px; line-height:16px; }
         </tr>
 
      <tr>
-          <td> 1</td>
+     
+          <td>1</td>
           <td>{{$data->name}} <br> </td>
           <td>{{$setting->hsn_code}}</td>
           <td>{{$data->qty}}</td>

@@ -14,6 +14,9 @@
   <link href="{{asset('admin_asset/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('admin_asset/css/ruang-admin.min.css')}}" rel="stylesheet">
   <link href="{{asset('admin_asset/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+  <!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -380,6 +383,7 @@
   <!-- Page level plugins -->
   <script src="{{asset('admin_asset/vendor/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('admin_asset/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
   <!-- Page level custom scripts -->
   <script>
@@ -388,6 +392,8 @@
       $('#dataTableHover').DataTable(); // ID From dataTable with Hover
     });
   </script>
+  @yield('scripts')
+ 
 
 </body>
 

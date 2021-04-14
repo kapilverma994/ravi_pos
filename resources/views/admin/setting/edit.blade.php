@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
 
-                <textarea name="info" id="" class="form-control" cols="30" rows="10">{{$data->info}}</textarea>
+                <textarea name="info" id="summernote" class="form-control" cols="30" rows="10">{{$data->info}}</textarea>
               
                 </div>
                 <div class="form-group">
@@ -137,4 +137,12 @@
       </div>
       </div>
   </div>
+  @endsection
+
+  @section('scripts')
+  <script>
+  $(document).ready(function() {
+    $('#summernote').summernote();
+  });
+</script>
   @endsection
