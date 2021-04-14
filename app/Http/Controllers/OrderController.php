@@ -46,7 +46,7 @@ public function without_gst(){
         $setting=Setting::latest()->first();
 
         return view('admin.order.invoice',compact('data','setting'));
-       
+   
         $pdf= PDF::loadView('admin.order.invoice', compact('data','setting'));
         return $pdf->download('invoice.pdf');
 

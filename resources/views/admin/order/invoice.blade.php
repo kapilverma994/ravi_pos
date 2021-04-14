@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="images/favicon.png" rel="icon" />
 <link rel="icon" href="" type="image/x-icon" />
@@ -11,6 +13,7 @@
 ======================= -->
 
 <style>
+
      @page {
     margin-top: 0;
     margin-bottom: 0;
@@ -99,7 +102,7 @@ p { margin:0 0 10px; line-height:16px; }
 
 	  <div style="padding: 0 15px 50px;">
     <div class="header-section" style=" margin: 0 0 10px; float: left; width: 100%;">
- <div class="header-1 header1" style="width: 25%; vertical-align: top;float: left;"><img src="" class="logo-img" alt="{{$setting->app_name}} logo" style"max-width: 125px; margin-top: 10px;"> </div>
+ <div class="header-1 header1" style="width: 25%; vertical-align: top;float: left;"><img src="{{asset('storage/images/'.$setting->image)}}" class="logo-img" alt="{{$setting->app_name}} logo" style"max-width: 125px; margin-top: 10px;"> </div>
 	  	<div class="header-1 header2" style="width:45%; vertical-align:top; text-align:center; float:left;">
         <h3 style="font-size: 17px; font-weight: 500;  margin: 0;    text-transform: uppercase; color: #000; font-family:&quot;Poppins&quot;, sans-serif;">{{$setting->app_name}}</h3>
         <p style="font-size:12px; color: #3e3e3e; font-family:&quot;Poppins&quot;, sans-serif;">{{$setting->address}}
