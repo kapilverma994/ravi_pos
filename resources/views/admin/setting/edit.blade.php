@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
 
-                <textarea name="info" id="summernote" class="form-control" cols="30" rows="10">{{$data->info}}</textarea>
+                <textarea name="info" id="summernote" class="form-control" cols="30" rows="10">{!!$data->info!!}</textarea>
               
                 </div>
                 <div class="form-group">

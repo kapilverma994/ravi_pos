@@ -257,7 +257,7 @@ p { margin:0 0 10px; line-height:16px; }
         @endif
       </div>
     </div>
-	    <p style="color:#3e3e3e; margin:0; font-size:11px;  font-family:&quot;Poppins&quot;, sans-serif;">{{$setting->info}} </p>
+	    <p style="color:#3e3e3e; margin:0; font-size:11px;  font-family:&quot;Poppins&quot;, sans-serif;">{!!$setting->info!!} </p>
      <p style="color:#3e3e3e;  margin:0; font-size:11px;  font-family:&quot;Poppins&quot;, sans-serif;">All amounts are inclusive of tax.</p>
 
 
